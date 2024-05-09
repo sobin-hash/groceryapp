@@ -1,0 +1,31 @@
+
+<app-header (searchEventEmitter)="onSearchText($event)"></app-header>
+<table class="table table-striped w-100 ">
+    <thead class="ms-4">
+      <tr>
+        
+        <th scope="col">Sr.No</th>
+        <th scope="col">Item</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+        <th scope="col">Ations</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of itemArray | search:searchKey;index as in">
+        <th scope="row">{{in+1}}</th>
+        <td>{{i.item}}</td>
+        <td>{{i.quantity}}</td>
+        <td>{{i.price}}</td>
+        <td><i class="fa-regular fa-pen-to-square me-2" routerLink="/additem/{{i._id}}"></i>
+           <i class="fa-solid fa-trash"  (click)="onDelete(i._id)"></i>
+        </td>
+        
+      </tr>
+     
+    </tbody>
+  </table>
+
+
+    
